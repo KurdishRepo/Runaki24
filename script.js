@@ -103,7 +103,7 @@ const translations = {
     },
     ku: { // Kurdish Central
         title: "خەمڵاندنی پسوولەی کارەبا",
-        segment: "پسوولەکەت بخەمڵێنە",
+        segment: "جۆری هاوبەش",
         consumption: "کارەبا (کیلۆوات کاتژمێر)",
         calculateButton: "پسوولەکەت بخەمڵێنە",
         calculationDetails: "وردەکاری ژمێریاری",
