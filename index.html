@@ -5,10 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tariff Calculator</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js " crossorigin="anonymous"></script> <!-- For icons -->
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button id="language-button">
+            <i class="fa-solid fa-globe"></i> <!-- Globe icon -->
+            <span id="current-language">ENGLISH</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" style="width: 20px; height: 14px; margin-left: 5px;">
+        </button>
+        <div id="language-menu" class="hidden">
+            <a href="#" data-lang="en">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="USA Flag" style="width: 20px; height: 14px; margin-left: 5px;"> English
+            </a>
+            <a href="#" data-lang="ar">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Iraq.svg" alt="Iraq Flag" style="width: 20px; height: 14px; margin-left: 5px;"> العربية
+            </a>
+            <a href="#" data-lang="ku">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Flag_of_Kurdistan.svg" alt="Kurdish Flag" style="width: 20px; height: 14px; margin-left: 5px;"> کوردی
+            </a>
+        </div>
+    </div>
+
+    <!-- Tariff Calculator Form -->
     <div class="calculator-container">
-        <h1>Tariff Calculator</h1>
+        <h1 id="calculator-title">Tariff Calculator</h1>
         <form id="tariff-form">
             <label for="segment">Segment</label>
             <input type="text" id="segment" value="Residential" readonly>
@@ -20,7 +42,7 @@
         </form>
 
         <div id="result-section" class="hidden">
-            <h2>Calculation Details</h2>
+            <h2 id="calculation-details-title">Calculation Details</h2>
             <table id="calculation-table">
                 <tr>
                     <th>Segment</th>

@@ -73,3 +73,86 @@ document.getElementById('calculate-button').addEventListener('click', function (
     // Show the result section
     resultSection.classList.remove('hidden');
 });
+// Localization Data
+const translations = {
+    en: {
+        title: "Tariff Calculator",
+        segment: "Segment",
+        consumption: "Consumption (kWh)",
+        calculateButton: "Calculate Tariff",
+        calculationDetails: "Calculation Details",
+        totalTariff: "Total Tariff",
+        slab1: "Slab 1:",
+        slab2: "Slab 2:",
+        slab3: "Slab 3:",
+        slab4: "Slab 4:",
+        slab5: "Slab 5:",
+    },
+    ar: {
+        title: "حاسبة التعريفة",
+        segment: "القطاع",
+        consumption: "الاستهلاك (كيلو واط ساعة)",
+        calculateButton: "احسب التعريفة",
+        calculationDetails: "تفاصيل الحساب",
+        totalTariff: "التعريفة الإجمالية",
+        slab1: "الفئة 1:",
+        slab2: "الفئة 2:",
+        slab3: "الفئة 3:",
+        slab4: "الفئة 4:",
+        slab5: "الفئة 5:",
+    },
+    ku: { // Kurdish Central
+        title: "خەمڵاندنی پسوولەی کارەبا",
+        segment: "پسوولەکەت بخەمڵێنە",
+        consumption: "کارەبا (کیلۆوات کاتژمێر)",
+        calculateButton: "پسوولەکەت بخەمڵێنە",
+        calculationDetails: "وردەکاری ژمێریاری",
+        totalTariff: "کۆی گشتی پسوولە",
+        slab1: "بەشی 1: ",
+        slab2: "بەشی 2: ",
+        slab3: "بەشی 3: ",
+        slab4: "بەشی 4: ",
+        slab5: "بەشی 5: ",
+    },
+};
+
+// Initial Language
+let currentLanguage = "en";
+
+// Function to update the UI with the selected language
+function updateUI(lang) {
+    currentLanguage = lang;
+
+    // Update the language button text
+    document.getElementById("current-language").textContent = lang.toUpperCase();
+
+    // Update the calculator UI
+    document.getElementById("calculator-title").textContent = translations[lang].title;
+    document.querySelector('label[for="segment"]').textContent = translations[lang].segment;
+    document.querySelector('label[for="consumption"]').textContent = translations[lang].consumption;
+    document.getElementById("calculate-button").textContent = translations[lang].calculateButton;
+    document.getElementById("calculation-details-title").textContent = translations[lang].calculationDetails;
+    document.querySelector('.total-tariff span:first-child').textContent = translations[lang].totalTariff;
+    document.getElementById("slab1-result").parentElement.children[0].textContent = translations[lang].slab1;
+    document.getElementById("slab2-result").parentElement.children[0].textContent = translations[lang].slab2;
+    document.getElementById("slab3-result").parentElement.children[0].textContent = translations[lang].slab3;
+    document.getElementById("slab4-result").parentElement.children[0].textContent = translations[lang].slab4;
+    document.getElementById("slab5-result").parentElement.children[0].textContent = translations[lang].slab5;
+}
+
+// Event Listener for Language Switcher
+document.getElementById("language-button").addEventListener("click", function () {
+    const languageMenu = document.getElementById("language-menu");
+    languageMenu.classList.toggle("hidden");
+});
+
+document.getElementById("language-menu").addEventListener("click", function (event) {
+    if (event.target.tagName === "A") {
+        const lang = event.target.dataset.lang;
+        updateUI(lang);
+        document.getElementById("language-menu").classList.add("hidden");
+    }
+});
+
+// Initialize the UI with the default language (English)
+updateUI(currentLanguage);

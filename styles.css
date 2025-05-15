@@ -103,3 +103,55 @@ th {
     color: #d4af37;
     font-size: 1.2em;
 }
+
+/* Language Switcher Styles */
+.language-switcher {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#language-button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#language-button i {
+    margin-right: 5px;
+}
+
+#language-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+}
+
+#language-menu a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+#language-menu a img {
+    margin-right: 5px;
+}
+
+#language-menu a:hover {
+    background: #f4f4f4;
+}
