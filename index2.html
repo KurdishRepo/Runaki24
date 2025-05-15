@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>kWh to Amps Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding: 50px;
+    }
+    .calculator {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      color: #d4af37;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #d4af37;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c79e2b;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fffbe6;
+      border-left: 5px solid #d4af37;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator">
+  <h2>kWh to Amps Calculator</h2>
+  <form id="amp-form">
+    <label for="kwh">Monthly kWh Consumption:</label>
+    <input type="number" id="kwh" placeholder="e.g., 400" required />
+
+    <label for="voltage">Voltage (V):</label>
+    <input type="number" id="voltage" value="220" />
+
+    <label for="days">Days of Usage:</label>
+    <input type="number" id="days" value="30" />
+
+    <label for="hours">Hours per Day:</label>
+    <input type="number" id="hours" value="24" />
+
+    <button type="submit">Calculate Amps</button>
+  </form>
+
+  <div class="result" id="result-box">
+    <strong>Result:</strong><br>
+    <p id="result-text"></p>
+  </div>
+</div>
+
+<script>
+  document.getElementById('amp-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const kwh = parseFloat(document.getElementById('kwh').value);
+    const voltage = parseFloat(document.getElementById('voltage').value);
+    const days = parseFloat(document.getElementById('days').value);
+    const hours = parseFloat(document.getElementById('hours').value);
+
+    if (!kwh || !voltage || !days || !hours) {
+      alert("Please fill all fields correctly.");
+      return;
+    }
+
+    const totalHours = days * hours;
+    const powerW = (kwh * 1000) / totalHours; // kW to W
+    const amps = powerW / voltage;
+
+    const resultText = `
+      Average Power: ${powerW.toFixed(2)} Watts<br>
+      Average Current: <strong>${amps.toFixed(2)} Amps</strong>
+    `;
+
+    const resultBox = document.getElementById('result-box');
+    resultBox.innerHTML = resultText;
+    resultBox.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
